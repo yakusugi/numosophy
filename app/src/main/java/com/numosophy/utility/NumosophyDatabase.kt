@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.numosophy.dao.UserDao
 import com.numosophy.entity.User
 
-@Database(entities = [User::class], version = 1, exportSchema = false)
+@Database(entities = [User::class], version = 2, exportSchema = false)
 abstract class NumosophyDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
 
@@ -21,7 +21,9 @@ abstract class NumosophyDatabase : RoomDatabase() {
                     context.applicationContext,
                     NumosophyDatabase::class.java,
                     "app_database"
-                ).build()
+                )
+                    .fallbackToDestructiveMigration() // Ensures old DB is dropped if schema changes
+                    .build()
                 INSTANCE = instance
                 instance
             }

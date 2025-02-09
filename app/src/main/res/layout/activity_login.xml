@@ -72,16 +72,30 @@
                 android:textCursorDrawable="@null" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <Button
+<!--        <Button-->
+<!--            android:id="@+id/login_btn"-->
+<!--            android:layout_width="250dp"-->
+<!--            android:layout_height="60dp"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:backgroundTint="@color/white"-->
+<!--            android:text="Sign in"-->
+<!--            android:textAllCaps="false"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="18sp" />-->
+
+
+
+        <ImageButton
             android:id="@+id/login_btn"
-            android:layout_width="250dp"
-            android:layout_height="60dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:backgroundTint="@color/white"
-            android:text="Sign in"
-            android:textAllCaps="false"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:src="@drawable/sign_in"
+            android:background="@android:color/transparent"
+            android:contentDescription="Sign In Button"
+            android:scaleType="fitCenter"/>
+
+
 
         <TextView
             android:id="@+id/text_view_sign_up"

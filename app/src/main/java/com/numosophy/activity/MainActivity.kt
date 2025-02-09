@@ -16,22 +16,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        val db = NumosophyDatabase.getDatabase(this)
-//        val userDao = db.userDao()
-
-//        val button: Button = findViewById(R.id.addUserButton)
-//        button.setOnClickListener {
-//            CoroutineScope(Dispatchers.IO).launch {
-//                // Insert a new user
-//                val newUser = User(name = "John Doe", email = "john@example.com", role = "Admin")
-//                userDao.insertUser(newUser)
-//                Log.d("RoomTest", "User inserted!")
-//
-//                // Get all users
-//                val userList = userDao.getAllUsers()
-//                Log.d("RoomTest", "Users: $userList")
-//            }
-//        }
         val db = NumosophyDatabase.getDatabase(this)
         val userDao = db.userDao()
 
