@@ -2,4 +2,7 @@
     <string name="app_name">Numosophy</string>
     <string name="account">Don\'t you have an account? <font color="#5b39c6"><b><u><i>Sign up</i></u></b></font> </string>
     <string name="forgot_password"><u>I forgot password</u></string>
+
+<!--    hint-->
+    <string name="hint_name">Name</string>
 </resources>

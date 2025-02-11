@@ -36,14 +36,14 @@
             app:boxStrokeColor="@color/black"
             app:hintTextColor="@color/black"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            app:startIconDrawable="@drawable/at_24"
+            app:startIconDrawable="@drawable/user_36"
             >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edit_text_login_user_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Email"
+                android:hint="@string/hint_name"
                 android:inputType="textEmailAddress"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
