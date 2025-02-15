@@ -5,7 +5,7 @@ import android.util.Log
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.numosophy.R
-import com.numosophy.entity.User
+import com.numosphere.entity.User
 import com.numosophy.utility.NumosophyDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

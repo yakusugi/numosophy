@@ -4,10 +4,10 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.numosophy.dao.UserDao
-import com.numosophy.entity.User
+import com.numosphere.dao.UserDao
+import com.numosphere.entity.User
 
-@Database(entities = [User::class], version = 2, exportSchema = false)
+@Database(entities = [User::class], version = 3, exportSchema = false)
 abstract class NumosophyDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
 
@@ -20,9 +20,9 @@ abstract class NumosophyDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     NumosophyDatabase::class.java,
-                    "app_database"
+                    "numosphere_database"
                 )
-                    .fallbackToDestructiveMigration() // Ensures old DB is dropped if schema changes
+                    .fallbackToDestructiveMigration() // Drops DB if schema changes
                     .build()
                 INSTANCE = instance
                 instance
@@ -30,3 +30,4 @@ abstract class NumosophyDatabase : RoomDatabase() {
         }
     }
 }
+

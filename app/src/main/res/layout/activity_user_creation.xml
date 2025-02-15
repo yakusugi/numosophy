@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.LoginActivity">
+    tools:context=".activity.UserCreationActivity">
 
     <ImageView
         android:id="@+id/imageView"
@@ -40,7 +40,7 @@
             >
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edit_text_login_user_name"
+                android:id="@+id/edit_text_creation_user_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_name"
@@ -62,54 +62,70 @@
             >
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edit_text_login_user_pw"
+                android:id="@+id/edit_text_creation_user_pw"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Password"
+                android:hint="@string/hint_password"
                 android:inputType="textPassword"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
                 android:textCursorDrawable="@null" />
         </com.google.android.material.textfield.TextInputLayout>
 
-<!--        <Button-->
-<!--            android:id="@+id/login_btn"-->
-<!--            android:layout_width="250dp"-->
-<!--            android:layout_height="60dp"-->
-<!--            android:layout_marginTop="20dp"-->
-<!--            android:backgroundTint="@color/white"-->
-<!--            android:text="Sign in"-->
-<!--            android:textAllCaps="false"-->
-<!--            android:textColor="@color/black"-->
-<!--            android:textSize="18sp" />-->
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:boxStrokeColor="@color/black"
+            app:hintTextColor="@color/black"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:startIconDrawable="@drawable/dice_36"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_text_creation_role"
+                android:layout_width="match_parent"
+                android:layout_height="53dp"
+                android:hint="@string/hint_role"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textCursorDrawable="@null" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:boxStrokeColor="@color/black"
+            app:hintTextColor="@color/black"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:startIconDrawable="@drawable/users_36"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_text_creation_group_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_group"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textCursorDrawable="@null" />
+        </com.google.android.material.textfield.TextInputLayout>
 
 
         <ImageButton
-            android:id="@+id/login_btn"
+            android:id="@+id/user_creation_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:src="@drawable/sign_in"
+            android:src="@drawable/create"
             android:background="@android:color/transparent"
             android:contentDescription="Sign In Button"
             android:scaleType="fitCenter"/>
 
-        <TextView
-            android:id="@+id/text_view_create_profile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:text="@string/account"
-            android:textColor="@color/white"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/text_view_fortgot_pw"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20sp"
-            android:text="@string/forgot_password"
-            android:textSize="20sp" />
     </LinearLayout>
 
 

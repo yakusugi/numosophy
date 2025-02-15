@@ -1,8 +1,11 @@
 <resources>
     <string name="app_name">Numosophy</string>
-    <string name="account">Don\'t you have an account? <font color="#5b39c6"><b><u><i>Sign up</i></u></b></font> </string>
+    <string name="account">Don\'t you have a user? <font color="#5b39c6"><b><u><i>Create profile</i></u></b></font> </string>
     <string name="forgot_password"><u>I forgot password</u></string>
 
-<!--    hint-->
+    <!--    hint-->
     <string name="hint_name">Name</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_role">Role</string>
+    <string name="hint_group">Group</string>
 </resources>
