@@ -28,10 +28,13 @@ class UserRepository(private val userDao: UserDao) {
         userDao.insertUser(newUser)
     }
 
-    suspend fun authenticateUser(name: String, password: String): Boolean {
+    suspend fun authenticateUser(name: String, inputPassword: String): Boolean {
         val user = userDao.getUserByName(name) ?: return false
-        return SecurityUtils.verifyPassword(password, user.password)
+        val hashedInput = hashPassword(inputPassword)
+        return user.password == hashedInput
     }
+
+
 
     suspend fun getUserPublicKey(name: String): String? {
         return userDao.getUserByName(name)?.publicKey

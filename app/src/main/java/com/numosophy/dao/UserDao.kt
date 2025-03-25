@@ -9,7 +9,7 @@ interface UserDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertUser(user: User)
 
-    @Query("SELECT * FROM users WHERE name = :name")
+    @Query("SELECT * FROM users WHERE name = :name LIMIT 1")
     suspend fun getUserByName(name: String): User?
 
 
@@ -18,8 +18,8 @@ interface UserDao {
     suspend fun getUsersByGroup(groupId: String): List<User>
 
     //  Compare hashed password
-    @Query("SELECT * FROM users WHERE name = :name AND password = :password LIMIT 1")
-    suspend fun authenticateUser(name: String, password: String): User?
+//    @Query("SELECT * FROM users WHERE name = :name AND password = :password LIMIT 1")
+//    suspend fun authenticateUser(name: String, password: String): User?
 
     //  Get a user by publicKey (More secure than using name & password)
     @Query("SELECT * FROM users WHERE publicKey = :publicKey LIMIT 1")
