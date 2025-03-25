@@ -2,19 +2,17 @@ package com.numosophy.activity
 
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.numosophy.R
-import com.numosphere.entity.User
 import com.numosophy.utility.NumosophyDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class MainActivity : AppCompatActivity() {
+class MainContainerActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_main_container)
 
         val db = NumosophyDatabase.getDatabase(this)
         val userDao = db.userDao()

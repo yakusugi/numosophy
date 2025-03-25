@@ -1,6 +1,7 @@
 package com.numosophy.repository
 
 import com.numosophy.utility.KeyStoreHelper
+import com.numosophy.utility.SecurityUtils
 import com.numosphere.dao.UserDao
 import com.numosphere.entity.User
 import kotlinx.coroutines.Dispatchers
@@ -27,13 +28,16 @@ class UserRepository(private val userDao: UserDao) {
         userDao.insertUser(newUser)
     }
 
-    //  Authenticate User (Verify Hash)
-    suspend fun authenticateUser(name: String, password: String): User? {
-        val hashedPassword = hashPassword(password)  // Hash input password
-        return withContext(Dispatchers.IO) {
-            userDao.authenticateUser(name, hashedPassword) // Compare with DB hash
-        }
+    suspend fun authenticateUser(name: String, password: String): Boolean {
+        val user = userDao.getUserByName(name) ?: return false
+        return SecurityUtils.verifyPassword(password, user.password)
     }
+
+    suspend fun getUserPublicKey(name: String): String? {
+        return userDao.getUserByName(name)?.publicKey
+    }
+
+    //  Authenticate User (Verify Hash)
 
     // Get user by Public Key
     suspend fun getUserByPublicKey(publicKey: String): User? {

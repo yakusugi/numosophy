@@ -9,6 +9,10 @@ interface UserDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertUser(user: User)
 
+    @Query("SELECT * FROM users WHERE name = :name")
+    suspend fun getUserByName(name: String): User?
+
+
     //  Get all users in the same group
     @Query("SELECT * FROM users WHERE groupId = :groupId")
     suspend fun getUsersByGroup(groupId: String): List<User>
@@ -36,4 +40,6 @@ interface UserDao {
     //  Count total number of users
     @Query("SELECT COUNT(*) FROM users")
     suspend fun getUserCount(): Int
+
+
 }
