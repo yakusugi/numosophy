@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import com.numosophy.R
+import com.numosophy.utility.AppRoutes
 import com.numosophy.viewmodel.UserViewModel
 
 class LoginActivity : BaseActivity() {
@@ -45,8 +46,8 @@ class LoginActivity : BaseActivity() {
         userViewModel.loginSuccess.observe(this, Observer { success ->
             if (success) {
                 Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
-                // startActivity(Intent(this, DashboardActivity::class.java))
-                // finish()
+                safeStartActivity(AppRoutes.LOGIN_SUCCESS_REDIRECT)
+                finish()
             } else {
                 Toast.makeText(this, "Login Failed", Toast.LENGTH_SHORT).show()
             }
