@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/dash"
+        android:icon="@drawable/dashboard_monitor_36"
+        android:title="Dashboard" />
+    <item
+        android:id="@+id/sales"
+        android:icon="@drawable/point_of_sale_36"
+        android:title="Sales" />
+    <item
+        android:id="@+id/group"
+        android:icon="@drawable/group_36"
+        android:title="Group" />
+    <item
+        android:id="@+id/export"
+        android:icon="@drawable/file_export_36"
+        android:title="Export" />
+    <item
+        android:id="@+id/settings"
+        android:icon="@drawable/settings_36"
+        android:title="Settings" />
+</menu>
