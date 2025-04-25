@@ -4,12 +4,15 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.numosophy.dao.SalesDao
+import com.numosophy.entity.Sale
 import com.numosphere.dao.UserDao
 import com.numosphere.entity.User
 
-@Database(entities = [User::class], version = 3, exportSchema = false)
+@Database(entities = [User::class, Sale::class], version = 5, exportSchema = false)
 abstract class NumosophyDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
+    abstract fun salesDao(): SalesDao
 
     companion object {
         @Volatile
@@ -22,7 +25,7 @@ abstract class NumosophyDatabase : RoomDatabase() {
                     NumosophyDatabase::class.java,
                     "numosphere_database"
                 )
-                    .fallbackToDestructiveMigration() // Drops DB if schema changes
+                    .fallbackToDestructiveMigration()
                     .build()
                 INSTANCE = instance
                 instance
@@ -30,4 +33,3 @@ abstract class NumosophyDatabase : RoomDatabase() {
         }
     }
 }
-

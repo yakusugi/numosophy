@@ -35,10 +35,10 @@
                 android:layout_height="wrap_content"/>
 
             <ImageView
-                android:layout_alignParentRight="true"
-                android:src="@drawable/cloud"
                 android:layout_width="62dp"
-                android:layout_height="62dp"/>
+                android:layout_height="62dp"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/chart_ball" />
 
         </RelativeLayout>
 
