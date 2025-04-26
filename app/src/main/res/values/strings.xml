@@ -20,4 +20,10 @@
     <string name="hint_location">Location</string>
     <string name="hint_notes">Notes</string>
     <string name="hint_date">Date</string>
+
+    <!-- ✅ New hints for location picker popup -->
+    <string name="hint_country">Select Country</string>
+    <string name="hint_state">Select State/Region</string>
+    <string name="hint_city">Select City</string>
+    <string name="button_ok">OK</string>
 </resources>

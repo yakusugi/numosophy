@@ -166,19 +166,21 @@
             app:boxStrokeColor="@color/black"
             app:hintTextColor="@color/black"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            app:startIconDrawable="@drawable/earth_asia_36"
-            >
+            app:startIconDrawable="@drawable/earth_asia_36">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/add_buyer_location"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_location"
-                android:inputType="numberDecimal"
+                android:focusable="false"
+                android:clickable="true"
+                android:inputType="none"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
                 android:textCursorDrawable="@null" />
         </com.google.android.material.textfield.TextInputLayout>
+
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="300dp"
@@ -234,6 +236,13 @@
             android:background="@android:color/transparent"
             android:contentDescription="Sign In Button"
             android:scaleType="fitCenter"/>
+
+        <FrameLayout
+            android:id="@+id/side_panel_container"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
 
 
     </LinearLayout>
