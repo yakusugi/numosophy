@@ -25,7 +25,7 @@ class MainContainerActivity : BaseActivity() {
 //        setContentView(R.layout.activity_main_container)
         replaceFragment(DashboardFragment())
 
-        binding.bottomNavView.setOnItemReselectedListener {
+        binding.bottomNavView.setOnItemSelectedListener {
             when(it.itemId) {
                 R.id.dash -> replaceFragment(DashboardFragment())
                 R.id.sales -> replaceFragment(SalesFragment())

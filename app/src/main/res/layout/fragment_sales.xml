@@ -89,7 +89,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_amount"
-                android:inputType="text"
+                android:inputType="numberDecimal"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
                 android:textCursorDrawable="@null" />
@@ -216,7 +216,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_date"
-                android:inputType="date"
+                android:focusable="false"
+                android:clickable="true"
+                android:inputType="none"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
                 android:textCursorDrawable="@null" />

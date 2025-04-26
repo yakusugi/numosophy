@@ -10,7 +10,7 @@ data class Sale(
     val amount: Double,
     val buyerName: String,
     val buyerGender: String?,       // Optional
-    val buyerAge: Int?,             // Optional
+    val buyerBirthdate: String?,             // Optional
     val buyerLocation: String?,     // Optional
     val notes: String?,             // Optional
     val date: String,               //

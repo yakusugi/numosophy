@@ -16,7 +16,7 @@ interface SalesDao {
     suspend fun getSalesByUser(publicKey: String): List<Sale>
 
     @Query("SELECT * FROM sales WHERE date = :date AND groupId = :groupId")
-    suspend fun getSalesByDate(date: String, groupId: String): List<Sale>  // 👈 Added date filter
+    suspend fun getSalesByDate(date: String, groupId: String): List<Sale>
 
     @Delete
     suspend fun deleteSale(sale: Sale)
@@ -24,3 +24,4 @@ interface SalesDao {
     @Query("DELETE FROM sales WHERE groupId = :groupId")
     suspend fun deleteSalesByGroup(groupId: String)
 }
+

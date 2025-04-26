@@ -9,7 +9,7 @@ import com.numosophy.entity.Sale
 import com.numosphere.dao.UserDao
 import com.numosphere.entity.User
 
-@Database(entities = [User::class, Sale::class], version = 5, exportSchema = false)
+@Database(entities = [User::class, Sale::class], version = 6, exportSchema = false)
 abstract class NumosophyDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
     abstract fun salesDao(): SalesDao
