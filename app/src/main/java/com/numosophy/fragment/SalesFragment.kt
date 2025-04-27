@@ -17,6 +17,8 @@ import com.numosophy.model.SaleViewModel
 import com.numosophy.model.StateData
 import com.numosophy.utility.createSaleFromInputs
 import com.google.android.material.textfield.TextInputEditText
+import com.numosophy.utility.GenderSelection
+import com.numosophy.utility.UserRole
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -43,12 +45,17 @@ class SalesFragment : Fragment() {
         val titleInput = view.findViewById<TextInputEditText>(R.id.add_title)
         val amountInput = view.findViewById<TextInputEditText>(R.id.add_amount)
         val buyerNameInput = view.findViewById<TextInputEditText>(R.id.add_buyer_name)
-        val buyerGenderInput = view.findViewById<TextInputEditText>(R.id.add_buyer_gender)
+        val buyerGenderSpinner = view.findViewById<Spinner>(R.id.spinner_add_gender)
         val buyerBirthInput = view.findViewById<TextInputEditText>(R.id.add_buyer_age)
         val buyerLocationInput = view.findViewById<TextInputEditText>(R.id.add_buyer_location)
         val notesInput = view.findViewById<TextInputEditText>(R.id.add_notes)
         val dateInput = view.findViewById<TextInputEditText>(R.id.add_date)
         val addBtn = view.findViewById<ImageButton>(R.id.add_btn)
+
+        val genders = GenderSelection.values()
+        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, genders)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        buyerGenderSpinner.adapter = adapter
 
         dateInput?.setOnClickListener { showDatePicker(it as TextInputEditText) }
         buyerBirthInput?.setOnClickListener { showDatePicker(it as TextInputEditText) }
@@ -77,13 +84,13 @@ class SalesFragment : Fragment() {
                 title = titleInput.text.toString(),
                 amount = amountInput.text.toString().toDoubleOrNull() ?: 0.0,
                 buyerName = buyerNameInput.text.toString(),
-                buyerGender = buyerGenderInput.text.toString().ifEmpty { null },
+                buyerGender = (buyerGenderSpinner.selectedItem as? GenderSelection)?.label, // ✅ fixed here
                 buyerBirthdate = buyerBirthInput.text.toString().ifEmpty { null },
                 buyerLocation = buyerLocationInput.text.toString().ifEmpty { null },
                 notes = notesInput.text.toString().ifEmpty { null },
                 date = dateInput.text.toString(),
-                currentUserPublicKey = "mockPublicKey", // TODO: replace with real value
-                currentGroupId = "mockGroupId"           // TODO: replace with real value
+                currentUserPublicKey = "mockPublicKey",
+                currentGroupId = "mockGroupId"
             )
 
             saleViewModel.insertSale(newSale)

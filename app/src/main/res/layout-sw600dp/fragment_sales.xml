@@ -129,25 +129,35 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <!-- Buyer Gender -->
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    app:boxStrokeColor="@color/black"
-                    app:layout_columnWeight="1"
-                    app:layout_rowWeight="1"
-                    app:startIconDrawable="@drawable/venus_mars_36">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="8dp"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1"
+                android:layout_marginBottom="12dp"
+                android:layout_marginLeft="6dp">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/add_buyer_gender"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="6dp"
-                        android:hint="@string/hint_buyer_gender"
-                        android:textColor="@color/black"
-                        android:background="@android:color/white"/>
-                </com.google.android.material.textfield.TextInputLayout>
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/venus_mars_36"
+                android:layout_marginEnd="8dp"
+                android:contentDescription="@string/hint_buyer_gender" />
 
-                <!-- Buyer Age -->
+            <Spinner
+                android:id="@+id/spinner_add_gender"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:spinnerMode="dropdown" />
+        </LinearLayout>
+
+
+        <!-- Buyer Age -->
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
