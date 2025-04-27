@@ -40,7 +40,7 @@ class SalesFragment : Fragment() {
         val isTablet = resources.getBoolean(R.bool.isTablet)
         val isLandscape = resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
 
-        val titleInput = view.findViewById<AutoCompleteTextView>(R.id.add_title)
+        val titleInput = view.findViewById<TextInputEditText>(R.id.add_title)
         val amountInput = view.findViewById<TextInputEditText>(R.id.add_amount)
         val buyerNameInput = view.findViewById<TextInputEditText>(R.id.add_buyer_name)
         val buyerGenderInput = view.findViewById<TextInputEditText>(R.id.add_buyer_gender)

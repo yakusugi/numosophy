@@ -63,7 +63,7 @@
             app:startIconDrawable="@drawable/id_badge_36"
             >
 
-            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/add_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -71,7 +71,8 @@
                 android:inputType="text"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
-                android:textCursorDrawable="@null" />
+                android:textCursorDrawable="@null"
+                android:background="@android:color/white"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -92,7 +93,8 @@
                 android:inputType="numberDecimal"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
-                android:textCursorDrawable="@null" />
+                android:textCursorDrawable="@null"
+                android:background="@android:color/white"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -113,7 +115,8 @@
                 android:inputType="text"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
-                android:textCursorDrawable="@null" />
+                android:textCursorDrawable="@null"
+                android:background="@android:color/white"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -134,7 +137,8 @@
                 android:inputType="text"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
-                android:textCursorDrawable="@null" />
+                android:textCursorDrawable="@null"
+                android:background="@android:color/white"/>
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -156,7 +160,8 @@
                 android:inputType="text"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
-                android:textCursorDrawable="@null" />
+                android:textCursorDrawable="@null"
+                android:background="@android:color/white"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -178,7 +183,8 @@
                 android:inputType="none"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
-                android:textCursorDrawable="@null" />
+                android:textCursorDrawable="@null"
+                android:background="@android:color/white"/>
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -200,7 +206,8 @@
                 android:inputType="text"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
-                android:textCursorDrawable="@null" />
+                android:textCursorDrawable="@null"
+                android:background="@android:color/white"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -223,7 +230,8 @@
                 android:inputType="none"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
-                android:textCursorDrawable="@null" />
+                android:textCursorDrawable="@null"
+                android:background="@android:color/white"/>
         </com.google.android.material.textfield.TextInputLayout>
 
 

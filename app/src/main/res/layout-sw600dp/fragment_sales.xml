@@ -1,174 +1,254 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
-    android:padding="16dp">
+    tools:context=".fragment.SalesFragment">
 
-    <!-- Left side: Form -->
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:gravity="center_horizontal"
-        android:paddingEnd="8dp">
+    <RelativeLayout
+        android:id="@+id/add_spending_banner"
+        android:layout_marginTop="32dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        tools:ignore="MissingConstraints">
 
-        <androidx.gridlayout.widget.GridLayout
-            android:id="@+id/form_grid"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:columnCount="2"
-            app:alignmentMode="alignMargins"
-            app:rowOrderPreserved="false"
-            android:padding="8dp">
-
-            <!-- Title -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:layout_columnWeight="1"
-                app:layout_rowWeight="1"
-                app:boxStrokeColor="@color/black">
-                <com.google.android.material.textfield.MaterialAutoCompleteTextView
-                    android:id="@+id/add_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/hint_title"
-                    android:textColor="@color/black" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <!-- Amount -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:layout_columnWeight="1"
-                app:layout_rowWeight="1"
-                app:boxStrokeColor="@color/black">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/add_amount"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/hint_amount"
-                    android:textColor="@color/black" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <!-- Buyer Name -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:layout_columnWeight="1"
-                app:layout_rowWeight="1"
-                app:boxStrokeColor="@color/black">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/add_buyer_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/hint_buyer_name"
-                    android:textColor="@color/black" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <!-- Buyer Gender -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:layout_columnWeight="1"
-                app:layout_rowWeight="1"
-                app:boxStrokeColor="@color/black">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/add_buyer_gender"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/hint_buyer_gender"
-                    android:textColor="@color/black" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <!-- Buyer Age -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:layout_columnWeight="1"
-                app:layout_rowWeight="1"
-                app:boxStrokeColor="@color/black">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/add_buyer_age"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/hint_buyer_age"
-                    android:textColor="@color/black" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <!-- Buyer Location -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:layout_columnWeight="1"
-                app:layout_rowWeight="1"
-                app:boxStrokeColor="@color/black">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/add_buyer_location"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/hint_location"
-                    android:focusable="false"
-                    android:clickable="true"
-                    android:textColor="@color/black" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <!-- Notes -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:layout_columnWeight="1"
-                app:layout_rowWeight="1"
-                app:boxStrokeColor="@color/black">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/add_notes"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/hint_notes"
-                    android:textColor="@color/black" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <!-- Date -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:layout_columnWeight="1"
-                app:layout_rowWeight="1"
-                app:boxStrokeColor="@color/black">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/add_date"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/hint_date"
-                    android:focusable="false"
-                    android:clickable="true"
-                    android:textColor="@color/black" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-        </androidx.gridlayout.widget.GridLayout>
-
-        <!-- Submit Button -->
-        <ImageButton
-            android:id="@+id/add_btn"
+        <TextView
+            android:id="@+id/title_spending"
+            android:text="Expense"
+            android:textSize="22sp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/add"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:scaleType="centerInside"
-            android:layout_margin="16dp"
-        />
-    </LinearLayout>
+            android:layout_height="wrap_content"/>
 
-    <!-- Right side: Location Side Panel -->
-    <FrameLayout
-        android:id="@+id/side_panel_container"
-        android:layout_width="0dp"
+        <TextView
+            android:id="@+id/sub_title_spending"
+            android:layout_marginTop="6dp"
+            android:layout_below="@+id/title_spending"
+            android:text="Your money, your life"
+            android:textSize="14sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:layout_alignParentRight="true"
+            android:src="@drawable/calculator_optimized"
+            android:layout_width="62dp"
+            android:layout_height="62dp"/>
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:background="@android:color/white"
-        android:visibility="gone" />
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <!-- Left side: Form -->
+
+        <!-- Right side: Location Side Panel -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/login_shape"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingEnd="8dp">
+
+            <androidx.gridlayout.widget.GridLayout
+                android:id="@+id/form_grid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                app:alignmentMode="alignMargins"
+                app:columnCount="2"
+                app:rowOrderPreserved="false">
+
+                <!-- Title -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    app:boxStrokeColor="@color/black"
+                    app:layout_columnWeight="1"
+                    app:layout_rowWeight="1"
+                    app:startIconDrawable="@drawable/id_badge_36">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/add_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="6dp"
+                        android:hint="@string/hint_title"
+                        android:textColor="@color/black"
+                        android:background="@android:color/white"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Amount -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:boxStrokeColor="@color/black"
+                    app:layout_columnWeight="1"
+                    app:layout_rowWeight="1"
+                    app:startIconDrawable="@drawable/money_income_36">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/add_amount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="6dp"
+                        android:hint="@string/hint_amount"
+                        android:textColor="@color/black"
+                        android:background="@android:color/white"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Buyer Name -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:boxStrokeColor="@color/black"
+                    app:layout_columnWeight="1"
+                    app:layout_rowWeight="1"
+                    app:startIconDrawable="@drawable/credit_card_buyer_36">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/add_buyer_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:layout_marginRight="6dp"
+                        android:hint="@string/hint_buyer_name"
+                        android:textColor="@color/black"
+                        android:background="@android:color/white"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Buyer Gender -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:boxStrokeColor="@color/black"
+                    app:layout_columnWeight="1"
+                    app:layout_rowWeight="1"
+                    app:startIconDrawable="@drawable/venus_mars_36">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/add_buyer_gender"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="6dp"
+                        android:hint="@string/hint_buyer_gender"
+                        android:textColor="@color/black"
+                        android:background="@android:color/white"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Buyer Age -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:boxStrokeColor="@color/black"
+                    app:layout_columnWeight="1"
+                    app:layout_rowWeight="1"
+                    app:startIconDrawable="@drawable/age_36">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/add_buyer_age"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:layout_marginRight="6dp"
+                        android:hint="@string/hint_buyer_age"
+                        android:textColor="@color/black"
+                        android:background="@android:color/white"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Buyer Location -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:boxStrokeColor="@color/black"
+                    app:layout_columnWeight="1"
+                    app:layout_rowWeight="1"
+                    app:startIconDrawable="@drawable/earth_asia_36">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/add_buyer_location"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="6dp"
+                        android:clickable="true"
+                        android:focusable="false"
+                        android:hint="@string/hint_location"
+                        android:textColor="@color/black"
+                        android:background="@android:color/white"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Notes -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:boxStrokeColor="@color/black"
+                    app:layout_columnWeight="1"
+                    app:layout_rowWeight="1"
+                    app:startIconDrawable="@drawable/journal_alt_36">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/add_notes"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="6dp"
+                        android:hint="@string/hint_notes"
+                        android:textColor="@color/black"
+                        android:background="@android:color/white"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Date -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:boxStrokeColor="@color/black"
+                    app:layout_columnWeight="1"
+                    app:layout_rowWeight="1"
+                    app:startIconDrawable="@drawable/calendar_36">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/add_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="6dp"
+                        android:clickable="true"
+                        android:focusable="false"
+                        android:hint="@string/hint_date"
+                        android:textColor="@color/black"
+                        android:background="@android:color/white"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </androidx.gridlayout.widget.GridLayout>
+
+            <!-- Submit Button -->
+            <ImageButton
+                android:id="@+id/add_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:scaleType="centerInside"
+                android:src="@drawable/add" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/side_panel_container"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/white"
+            android:visibility="gone" />
+
+    </LinearLayout>
 
 </LinearLayout>
