@@ -26,4 +26,9 @@
     <string name="hint_state">Select State/Region</string>
     <string name="hint_city">Select City</string>
     <string name="button_ok">OK</string>
+
+    <!--    DashboardActivity-->
+    <string name="title_dash">Numosophy</string>
+    <string name="sales_amount">Sales Amount</string>
+    <string name="line_chart">Line</string>
 </resources>

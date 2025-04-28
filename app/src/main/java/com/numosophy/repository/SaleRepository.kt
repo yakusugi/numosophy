@@ -1,5 +1,6 @@
 package com.numosophy.repository
 
+import androidx.lifecycle.LiveData
 import com.numosophy.dao.SalesDao
 import com.numosophy.entity.Sale
 
@@ -28,4 +29,6 @@ class SaleRepository(private val salesDao: SalesDao) {
     suspend fun deleteSalesByGroup(groupId: String) {
         salesDao.deleteSalesByGroup(groupId)
     }
+
+    val allSales: LiveData<List<Sale>> = salesDao.getAllSales()
 }

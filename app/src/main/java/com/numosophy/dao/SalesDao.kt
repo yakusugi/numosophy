@@ -1,5 +1,6 @@
 package com.numosophy.dao
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.numosophy.entity.Sale
 
@@ -23,5 +24,8 @@ interface SalesDao {
 
     @Query("DELETE FROM sales WHERE groupId = :groupId")
     suspend fun deleteSalesByGroup(groupId: String)
+
+    @Query("SELECT * FROM sales ORDER BY timestamp ASC")
+    fun getAllSales(): LiveData<List<Sale>>
 }
 

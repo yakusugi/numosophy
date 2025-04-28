@@ -3,11 +3,8 @@ package com.numosophy.fragment
 import android.app.DatePickerDialog
 import android.content.res.Configuration
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.*
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.numosophy.R
 import com.numosophy.api.ApiClient
@@ -18,84 +15,92 @@ import com.numosophy.model.StateData
 import com.numosophy.utility.createSaleFromInputs
 import com.google.android.material.textfield.TextInputEditText
 import com.numosophy.utility.GenderSelection
-import com.numosophy.utility.UserRole
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.util.Calendar
 
-class SalesFragment : Fragment() {
+class SalesFragment : BaseFragment(R.layout.fragment_sales) { // ✨ extend BaseFragment
 
     private val saleViewModel: SaleViewModel by viewModels()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_sales, container, false)
-    }
+    private lateinit var titleInput: TextInputEditText
+    private lateinit var amountInput: TextInputEditText
+    private lateinit var buyerNameInput: TextInputEditText
+    private lateinit var buyerGenderSpinner: Spinner
+    private lateinit var buyerBirthInput: TextInputEditText
+    private lateinit var buyerLocationInput: TextInputEditText
+    private lateinit var notesInput: TextInputEditText
+    private lateinit var dateInput: TextInputEditText
+    private lateinit var addBtn: ImageButton
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val isTablet = resources.getBoolean(R.bool.isTablet)
-        val isLandscape = resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
+        initViews(view)
+        setupGenderSpinner()
+        setupListeners()
+    }
 
-        val titleInput = view.findViewById<TextInputEditText>(R.id.add_title)
-        val amountInput = view.findViewById<TextInputEditText>(R.id.add_amount)
-        val buyerNameInput = view.findViewById<TextInputEditText>(R.id.add_buyer_name)
-        val buyerGenderSpinner = view.findViewById<Spinner>(R.id.spinner_add_gender)
-        val buyerBirthInput = view.findViewById<TextInputEditText>(R.id.add_buyer_age)
-        val buyerLocationInput = view.findViewById<TextInputEditText>(R.id.add_buyer_location)
-        val notesInput = view.findViewById<TextInputEditText>(R.id.add_notes)
-        val dateInput = view.findViewById<TextInputEditText>(R.id.add_date)
-        val addBtn = view.findViewById<ImageButton>(R.id.add_btn)
+    private fun initViews(view: View) {
+        titleInput = view.findViewById(R.id.add_title)
+        amountInput = view.findViewById(R.id.add_amount)
+        buyerNameInput = view.findViewById(R.id.add_buyer_name)
+        buyerGenderSpinner = view.findViewById(R.id.spinner_add_gender)
+        buyerBirthInput = view.findViewById(R.id.add_buyer_age)
+        buyerLocationInput = view.findViewById(R.id.add_buyer_location)
+        notesInput = view.findViewById(R.id.add_notes)
+        dateInput = view.findViewById(R.id.add_date)
+        addBtn = view.findViewById(R.id.add_btn)
+    }
 
+    private fun setupGenderSpinner() {
         val genders = GenderSelection.values()
         val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, genders)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         buyerGenderSpinner.adapter = adapter
+    }
 
-        dateInput?.setOnClickListener { showDatePicker(it as TextInputEditText) }
-        buyerBirthInput?.setOnClickListener { showDatePicker(it as TextInputEditText) }
+    private fun setupListeners() {
+        dateInput.setOnClickListener { showDatePicker(dateInput) }
+        buyerBirthInput.setOnClickListener { showDatePicker(buyerBirthInput) }
 
-        val inputFields = listOf(titleInput, amountInput, buyerNameInput, dateInput)
-
-        buyerLocationInput?.setOnClickListener {
-            if (isTablet && isLandscape) {
+        buyerLocationInput.setOnClickListener {
+            if (isTablet() && isLandscape()) {
                 showLocationSidePanel(buyerLocationInput)
             } else {
                 showLocationPopupDialog(buyerLocationInput)
             }
         }
 
+        addBtn.setOnClickListener { saveSale() }
+    }
 
+    private fun saveSale() {
+        val inputFields = listOf(titleInput, amountInput, buyerNameInput, dateInput)
 
-        addBtn?.setOnClickListener {
-            val allFilled = inputFields.all { it.text?.isNotEmpty() == true }
-
-            if (!allFilled) {
-                Toast.makeText(requireContext(), "Please fill in Title, Amount, Buyer, and Date", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
-
-            val newSale = createSaleFromInputs(
-                title = titleInput.text.toString(),
-                amount = amountInput.text.toString().toDoubleOrNull() ?: 0.0,
-                buyerName = buyerNameInput.text.toString(),
-                buyerGender = (buyerGenderSpinner.selectedItem as? GenderSelection)?.label, // ✅ fixed here
-                buyerBirthdate = buyerBirthInput.text.toString().ifEmpty { null },
-                buyerLocation = buyerLocationInput.text.toString().ifEmpty { null },
-                notes = notesInput.text.toString().ifEmpty { null },
-                date = dateInput.text.toString(),
-                currentUserPublicKey = "mockPublicKey",
-                currentGroupId = "mockGroupId"
-            )
-
-            saleViewModel.insertSale(newSale)
-            Toast.makeText(requireContext(), "✅ Sale saved: ${newSale.title}", Toast.LENGTH_SHORT).show()
+        val allFilled = inputFields.all { it.text?.isNotEmpty() == true }
+        if (!allFilled) {
+            showToast("Please fill in Title, Amount, Buyer, and Date")
+            return
         }
+
+        val newSale = createSaleFromInputs(
+            title = titleInput.text.toString(),
+            amount = amountInput.text.toString().toDoubleOrNull() ?: 0.0,
+            buyerName = buyerNameInput.text.toString(),
+            buyerGender = (buyerGenderSpinner.selectedItem as? GenderSelection)?.label,
+            buyerBirthdate = buyerBirthInput.text.toString().ifEmpty { null },
+            buyerLocation = buyerLocationInput.text.toString().ifEmpty { null },
+            notes = notesInput.text.toString().ifEmpty { null },
+            date = dateInput.text.toString(),
+            currentUserPublicKey = "mockPublicKey",
+            currentGroupId = "mockGroupId"
+        )
+
+        saleViewModel.insertSale(newSale)
+        showToast("✅ Sale saved: ${newSale.title}")
     }
 
     private fun showDatePicker(targetInput: TextInputEditText) {
@@ -112,17 +117,12 @@ class SalesFragment : Fragment() {
         datePicker.show()
     }
 
-    private fun showLocationPopup(targetInput: TextInputEditText) {
-        val isTablet = resources.getBoolean(R.bool.isTablet)
-        val isLandscape = resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
-        val container = view?.findViewById<FrameLayout>(R.id.side_panel_container)
-        container?.visibility = View.VISIBLE
+    private fun isTablet(): Boolean {
+        return resources.getBoolean(R.bool.isTablet)
+    }
 
-        if (isTablet && isLandscape) {
-            showLocationSidePanel(targetInput)
-        } else {
-            showLocationPopupDialog(targetInput)
-        }
+    private fun isLandscape(): Boolean {
+        return resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
     }
 
     private fun showLocationPopupDialog(targetInput: TextInputEditText) {
@@ -133,7 +133,6 @@ class SalesFragment : Fragment() {
         val okButton = dialogView.findViewById<Button>(R.id.button_ok)
 
         var countryList = emptyList<CountryData>()
-        var stateList = emptyList<StateData>()
 
         CoroutineScope(Dispatchers.IO).launch {
             try {
@@ -145,20 +144,17 @@ class SalesFragment : Fragment() {
                     countrySpinner.adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, countryNames)
                 }
             } catch (e: Exception) {
-                e.printStackTrace()
+                showError(e)
             }
         }
 
         countrySpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                if (countryList.isNotEmpty()) {
-                    val selectedCountry = countryList[position]
-                    stateList = selectedCountry.states
-
-                    val stateNames = stateList.map { it.name }
-                    stateSpinner.adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, stateNames)
-                }
+                val selectedCountry = countryList[position]
+                val stateNames = selectedCountry.states.map { it.name }
+                stateSpinner.adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, stateNames)
             }
+
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
 
@@ -178,11 +174,7 @@ class SalesFragment : Fragment() {
     }
 
     private fun showLocationSidePanel(targetInput: TextInputEditText) {
-        val container = view?.findViewById<FrameLayout>(R.id.side_panel_container)
-        if (container == null) {
-            Toast.makeText(requireContext(), "Side panel container not found", Toast.LENGTH_SHORT).show()
-            return
-        }
+        val container = view?.findViewById<FrameLayout>(R.id.side_panel_container) ?: return showToast("Side panel not found").run {}
 
         container.visibility = View.VISIBLE
         container.removeAllViews()
@@ -195,7 +187,6 @@ class SalesFragment : Fragment() {
         val okButton = sidePanelView.findViewById<Button>(R.id.button_ok)
 
         var countryList = emptyList<CountryData>()
-        var stateList = emptyList<StateData>()
 
         CoroutineScope(Dispatchers.IO).launch {
             try {
@@ -207,20 +198,17 @@ class SalesFragment : Fragment() {
                     countrySpinner.adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, countryNames)
                 }
             } catch (e: Exception) {
-                e.printStackTrace()
+                showError(e)
             }
         }
 
         countrySpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                if (countryList.isNotEmpty()) {
-                    val selectedCountry = countryList[position]
-                    stateList = selectedCountry.states
-
-                    val stateNames = stateList.map { it.name }
-                    stateSpinner.adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, stateNames)
-                }
+                val selectedCountry = countryList[position]
+                val stateNames = selectedCountry.states.map { it.name }
+                stateSpinner.adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, stateNames)
             }
+
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
 
@@ -229,8 +217,7 @@ class SalesFragment : Fragment() {
             val selectedState = stateSpinner.selectedItem?.toString() ?: ""
 
             targetInput.setText("$selectedCountry, $selectedState")
-
-            container.visibility = View.GONE // Hide side panel
+            container.visibility = View.GONE
         }
     }
 }

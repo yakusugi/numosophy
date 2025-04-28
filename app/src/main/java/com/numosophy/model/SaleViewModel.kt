@@ -2,6 +2,7 @@ package com.numosophy.model
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.numosophy.entity.Sale
 import com.numosophy.repository.SaleRepository
@@ -16,6 +17,9 @@ class SaleViewModel(application: Application) : AndroidViewModel(application) {
         val salesDao = NumosophyDatabase.getDatabase(application).salesDao()
         repository = SaleRepository(salesDao)
     }
+
+    val allSales: LiveData<List<Sale>> = repository.allSales
+
 
     fun insertSale(sale: Sale) {
         viewModelScope.launch {
