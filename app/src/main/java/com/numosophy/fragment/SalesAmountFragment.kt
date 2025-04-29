@@ -81,7 +81,7 @@ class SalesAmountFragment : BaseFragment(R.layout.fragment_sales_amount) {  // â
         lineChart.description.isEnabled = false
         lineChart.animateX(1000)
 
-        // âœ¨ Set month names on X Axis
+        // Set month names on X Axis
         val months = listOf(
             "Jan", "Feb", "Mar", "Apr", "May", "Jun",
             "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
