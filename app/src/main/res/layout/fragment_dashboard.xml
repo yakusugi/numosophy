@@ -89,7 +89,7 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/income_card"
+                    android:id="@+id/sales_data_card"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
@@ -105,7 +105,7 @@
                         android:layout_height="match_parent">
 
                         <ImageView
-                            android:src="@drawable/point_of_sale_36"
+                            android:src="@drawable/dollar_optimized"
                             android:layout_width="80dp"
                             android:layout_height="80dp"/>
 
@@ -113,7 +113,7 @@
                             android:layout_marginTop="12dp"
                             android:textColor="@color/black"
                             android:textSize="18sp"
-                            android:text="Income"
+                            android:text="@string/sales_data"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
 

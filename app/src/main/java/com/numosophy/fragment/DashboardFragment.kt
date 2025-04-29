@@ -14,11 +14,19 @@ class DashboardFragment : BaseFragment(R.layout.fragment_dashboard) { // ✨ ext
     }
 
     private fun setupDashboard() {
-        val salesCard = view?.findViewById<androidx.cardview.widget.CardView>(R.id.sales_card)
+        val lineCard = view?.findViewById<androidx.cardview.widget.CardView>(R.id.sales_card)
+        val salesCard = view?.findViewById<androidx.cardview.widget.CardView>(R.id.sales_data_card)
+
+        lineCard?.setOnClickListener {
+            requireActivity().supportFragmentManager.beginTransaction()
+                .replace(R.id.frame_layout, SalesAmountFragment())
+                .addToBackStack(null)
+                .commit()
+        }
 
         salesCard?.setOnClickListener {
             requireActivity().supportFragmentManager.beginTransaction()
-                .replace(R.id.frame_layout, SalesAmountFragment())
+                .replace(R.id.frame_layout, SalesDataFragment())
                 .addToBackStack(null)
                 .commit()
         }

@@ -31,4 +31,6 @@
     <string name="title_dash">Numosophy</string>
     <string name="sales_amount">Sales Amount</string>
     <string name="line_chart">Line</string>
+    <string name="sales_data">Sales data</string>
+    <string name="sales_data_title">Sales Data</string>
 </resources>
